@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 6ff604f4f34f9fc448bf137c5cbb920c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 232458
+  packageName: Ultimate Earth Planet System
+  packageVersion: 1.1
+  assetPath: Assets/Earth Planet/Scripts/SpeedManager.cs
+  uploadId: 549507

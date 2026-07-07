@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 85fb4843725b62f4d82a5f8ff6b5143d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 232458
+  packageName: Ultimate Earth Planet System
+  packageVersion: 1.1
+  assetPath: Assets/Earth Planet/Scripts/UnitEarth.cs
+  uploadId: 549507

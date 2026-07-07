@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 57a884e73e5c58b4aac1070916c3ff0f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 232458
+  packageName: Ultimate Earth Planet System
+  packageVersion: 1.1
+  assetPath: Assets/Earth Planet/Scripts/BSPTreeSegment.cs
+  uploadId: 549507

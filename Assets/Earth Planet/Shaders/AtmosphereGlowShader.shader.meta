@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: f8caf031f8d868d41b433edf6380ce4f
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 232458
+  packageName: Ultimate Earth Planet System
+  packageVersion: 1.1
+  assetPath: Assets/Earth Planet/Shaders/AtmosphereGlowShader.shader
+  uploadId: 549507

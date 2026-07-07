@@ -1,0 +1,287 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: WorldWealth
+  m_Shader: {fileID: 4800000, guid: 314e3034937b50349a70af5d749e7eae, type: 3}
+  m_ShaderKeywords: _ADD_PRECOMPUTED_VELOCITY _BLENDMODE_ALPHA _COUNTRIESVERTEXCOLORTINT_ON
+    _DISABLE_SSR _EMISSION _ENABLE_FOG_ON_TRANSPARENT _KEYWORD0_ON _SURFACE_TYPE_TRANSPARENT
+    _USEVERTEXCHANNEL_VERTEXALPHA _USEVERTEXCOLOR_ON _VERTEXCHANNEL_ALPHA _VERTEXCHANNEL_VERTEXCOLOR
+  m_LightmapFlags: 0
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap:
+    MotionVector: User
+  disabledShaderPasses:
+  - TransparentBackface
+  - TransparentDepthPrepass
+  - TransparentDepthPostpass
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BaseTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BorderDistanceTex:
+        m_Texture: {fileID: 2800000, guid: a82bcffaa094af04ebab63b28acac106, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BordersMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CountriesBordersMask:
+        m_Texture: {fileID: 2800000, guid: 6dffa14c4682cad4e9beffcac1027790, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CountriesTex:
+        m_Texture: {fileID: 2800000, guid: 286b6e6f63cf3dc479d05fdb0cb7a020, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CountryMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EarthMap:
+        m_Texture: {fileID: 2800000, guid: 286b6e6f63cf3dc479d05fdb0cb7a020, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EarthNormalMap:
+        m_Texture: {fileID: 2800000, guid: 1db77afdc9b714c49a4728890de35977, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NightMap:
+        m_Texture: {fileID: 2800000, guid: 14abb0596b07d1f41b3c28fc41d0b5a7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalTex:
+        m_Texture: {fileID: 2800000, guid: 1db77afdc9b714c49a4728890de35977, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OceanGridTex:
+        m_Texture: {fileID: 2800000, guid: 8ff7c8146fd10a24189196fa88e129fd, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OverlayTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SelectionTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SelectionTexCountries:
+        m_Texture: {fileID: 2800000, guid: 7c841689d19131e49bc256a326d00430, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SelectionTexOceans:
+        m_Texture: {fileID: 2800000, guid: 4d3fd44a40f3d2744897941f39f86a72, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture0:
+        m_Texture: {fileID: 2800000, guid: abb99dd7fedacb2479ef84e5147786e8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample0:
+        m_Texture: {fileID: 2800000, guid: a82bcffaa094af04ebab63b28acac106, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample1:
+        m_Texture: {fileID: 2800000, guid: 0d7e061f5853c874398a06d449279b02, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WaterMask:
+        m_Texture: {fileID: 2800000, guid: cf3f504ff7142c74bb1a1cff47525087, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _AddPrecomputedVelocity: 1
+    - _AlphaCutoff: 0.5
+    - _AlphaCutoffEnable: 0
+    - _AlphaDstBlend: 10
+    - _AlphaSrcBlend: 1
+    - _AtmosphereDarkSide: 0.423
+    - _AtmospherePower: 1.2
+    - _AtmosphereScale: 1.75
+    - _BlendMode: 0
+    - _BlendOp: 0
+    - _BorderWidth: 0.07
+    - _BordersValue: 1
+    - _BumpScale: 1
+    - _CameraFadingEnabled: 0
+    - _CameraFarFadeDistance: 2
+    - _CameraNearFadeDistance: 1
+    - _ColorMode: 0
+    - _CountriesOpacity: 1
+    - _CountriesTexValue: 1
+    - _CountriesVertexColorTint: 1
+    - _Cull: 2
+    - _CullMode: 2
+    - _CullModeForward: 2
+    - _Cutoff: 0.5
+    - _DayNightContrast: 7
+    - _DayNightContrast1: 4
+    - _DetailNormalMapScale: 1
+    - _DistortionBlend: 0.5
+    - _DistortionEnabled: 0
+    - _DistortionStrength: 1
+    - _DistortionStrengthScaled: 0
+    - _DoubleSidedEnable: 0
+    - _DoubleSidedNormalMode: 2
+    - _DstBlend: 0
+    - _EmissionEnabled: 0
+    - _EnableFogOnTransparent: 1
+    - _Fill: 0.032
+    - _FlipbookMode: 0
+    - _Float0: 0.8
+    - _Freq: 10
+    - _GlossMapScale: 1
+    - _Glossiness: 0
+    - _GlossyReflections: 1
+    - _Keyword0: 1
+    - _LandNormal: 0.1
+    - _LandSmoothness: 0.4
+    - _LightingEnabled: 0
+    - _Metallic: 0
+    - _Mode: 0
+    - _NightMult: 0.85
+    - _NormalScale: 0.1
+    - _NormalValue: 0.03
+    - _OcclusionStrength: 1
+    - _Opacity: 0.6
+    - _Parallax: 0.02
+    - _ReceivesSSR: 0
+    - _RenderQueueType: 5
+    - _RequireSplitLighting: 0
+    - _Saturation: 1.2
+    - _SelectionTexTiling: 20
+    - _SelectionTexValue: 0
+    - _Shininess: 0.7
+    - _Smoothness: 0.45
+    - _SmoothnessTextureChannel: 0
+    - _SoftParticlesEnabled: 0
+    - _SoftParticlesFarFadeDistance: 1
+    - _SoftParticlesNearFadeDistance: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _StencilRef: 0
+    - _StencilRefDepth: 0
+    - _StencilRefDistortionVec: 4
+    - _StencilRefGBuffer: 2
+    - _StencilRefMV: 32
+    - _StencilWriteMask: 6
+    - _StencilWriteMaskDepth: 8
+    - _StencilWriteMaskDistortionVec: 4
+    - _StencilWriteMaskGBuffer: 14
+    - _StencilWriteMaskMV: 40
+    - _StripesValue: 0
+    - _SurfaceType: 1
+    - _TessEdgeLength: 16
+    - _TessMax: 25
+    - _TessMaxDisp: 25
+    - _TessMin: 10
+    - _TessPhongStrength: 0.5
+    - _TessValue: 16
+    - _ToggleSwitch0: 0
+    - _TransparentBackfaceEnable: 0
+    - _TransparentCullMode: 2
+    - _TransparentDepthPostpassEnable: 0
+    - _TransparentDepthPrepassEnable: 0
+    - _TransparentSortPriority: -1
+    - _TransparentZWrite: 1
+    - _UVSec: 0
+    - _UseShadowThreshold: 0
+    - _UseVertexAlpha: 0
+    - _UseVertexChannel: 1
+    - _UseVertexColor: 1
+    - _Value: 1
+    - _VertexChannel: 1
+    - _VertexChannelBlend: 0.7
+    - _VertexColorBlend: 0
+    - _VertexColorTint: 0.96
+    - _WaterNormal: 0.03
+    - _WaterSmoothness: 0.7
+    - _ZTestDepthEqualForOpaque: 4
+    - _ZTestGBuffer: 4
+    - _ZTestTransparent: 4
+    - _ZWrite: 1
+    - __dirty: 0
+    m_Colors:
+    - _AlphaBlackTint: {r: 1, g: 0, b: 0, a: 0}
+    - _AlphaWhiteTint: {r: 0, g: 1, b: 0.13536787, a: 0}
+    - _AtmosphereColor: {r: 0.2392157, g: 0.6392158, b: 1, a: 1}
+    - _BaseColor: {r: 0.49, g: 0.4320298, b: 0, a: 1}
+    - _BorderColor: {r: 0.27352157, g: 0.5771737, b: 0.7372549, a: 1}
+    - _BordersColor: {r: 0.6603774, g: 0.6603774, b: 0.6603774, a: 1}
+    - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color0: {r: 0, g: 0, b: 0, a: 0}
+    - _Color1: {r: 0, g: 0, b: 0, a: 0}
+    - _ColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
+    - _CountriesTexTintHighlights: {r: 1, g: 1, b: 1, a: 0}
+    - _CountriesTexTintShadows: {r: 0, g: 0, b: 0, a: 0}
+    - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
+    - _EmisColor: {r: 0.2, g: 0.2, b: 0.2, a: 0}
+    - _Emission: {r: 0, g: 0, b: 0, a: 0}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OceanGridColor: {r: 0.239854, g: 0.6603774, b: 0.5791311, a: 0}
+    - _OceansColor: {r: 0.16170312, g: 0.22720313, b: 0.262, a: 0}
+    - _OceansFresnel: {r: 0.3365569, g: 0.6071888, b: 0.6509804, a: 0}
+    - _OverlayColor: {r: 0, g: 0, b: 0, a: 0}
+    - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
+    - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+    - _VTInfoBlock: {r: 0, g: 0, b: 0, a: 0}
+    - _WealthMax: {r: 0, g: 1, b: 0.014002323, a: 0}
+    - _WealthMin: {r: 1, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []

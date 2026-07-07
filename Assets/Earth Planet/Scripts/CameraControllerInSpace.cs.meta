@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 0abef057b7e33aa4e9731c7960778385
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 232458
+  packageName: Ultimate Earth Planet System
+  packageVersion: 1.1
+  assetPath: Assets/Earth Planet/Scripts/CameraControllerInSpace.cs
+  uploadId: 549507

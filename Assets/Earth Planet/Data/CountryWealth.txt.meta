@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: f60db26b4306edd428d69fc47d8ee1aa
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 232458
+  packageName: Ultimate Earth Planet System
+  packageVersion: 1.1
+  assetPath: Assets/Earth Planet/Data/CountryWealth.txt
+  uploadId: 549507

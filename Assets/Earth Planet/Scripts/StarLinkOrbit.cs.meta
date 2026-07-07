@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 2d80a6f34626f8a4c8517026c7976cd4
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 232458
+  packageName: Ultimate Earth Planet System
+  packageVersion: 1.1
+  assetPath: Assets/Earth Planet/Scripts/StarLinkOrbit.cs
+  uploadId: 549507

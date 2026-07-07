@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 953d46ab5f1f1c240b2a69a95d1ad162
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 232458
+  packageName: Ultimate Earth Planet System
+  packageVersion: 1.1
+  assetPath: Assets/Earth Planet/Scripts/CountryEditorButtons.cs
+  uploadId: 549507

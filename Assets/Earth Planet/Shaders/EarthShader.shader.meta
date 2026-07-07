@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 843474d731b810348a1545746e84138f
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _NightMap: {fileID: 2800000, guid: 14abb0596b07d1f41b3c28fc41d0b5a7, type: 3}
+  - _EarthMap: {fileID: 2800000, guid: 286b6e6f63cf3dc479d05fdb0cb7a020, type: 3}
+  - _EarthNormalMap: {fileID: 2800000, guid: 1db77afdc9b714c49a4728890de35977, type: 3}
+  - _WaterMask: {fileID: 2800000, guid: cf3f504ff7142c74bb1a1cff47525087, type: 3}
+  - _NightLightsMap: {fileID: 2800000, guid: c8c1a91fede64ee41a274aa301724539, type: 3}
+  nonModifiableTextures: []
+  preprocessorOverride: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 232458
+  packageName: Ultimate Earth Planet System
+  packageVersion: 1.1
+  assetPath: Assets/Earth Planet/Shaders/EarthShader.shader
+  uploadId: 549507

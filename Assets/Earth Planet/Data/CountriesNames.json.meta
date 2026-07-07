@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 32a9dc7405a762e499f463170942dea0
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 232458
+  packageName: Ultimate Earth Planet System
+  packageVersion: 1.1
+  assetPath: Assets/Earth Planet/Data/CountriesNames.json
+  uploadId: 549507

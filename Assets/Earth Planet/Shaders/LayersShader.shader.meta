@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: 314e3034937b50349a70af5d749e7eae
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _NormalTex: {fileID: 2800000, guid: 1db77afdc9b714c49a4728890de35977, type: 3}
+  - _OceanGridTex: {fileID: 2800000, guid: 8ff7c8146fd10a24189196fa88e129fd, type: 3}
+  - _SelectionTexOceans: {fileID: 2800000, guid: 4d3fd44a40f3d2744897941f39f86a72,
+      type: 3}
+  - _SelectionTexCountries: {fileID: 2800000, guid: 7c841689d19131e49bc256a326d00430,
+      type: 3}
+  - _CountriesBordersMask: {fileID: 2800000, guid: 6dffa14c4682cad4e9beffcac1027790,
+      type: 3}
+  - _CountriesTex: {fileID: 2800000, guid: 230e7f2732dacf24787709062cfe0185, type: 3}
+  nonModifiableTextures: []
+  preprocessorOverride: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 232458
+  packageName: Ultimate Earth Planet System
+  packageVersion: 1.1
+  assetPath: Assets/Earth Planet/Shaders/LayersShader.shader
+  uploadId: 549507

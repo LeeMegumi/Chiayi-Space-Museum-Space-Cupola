@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 7065c9e0fc5e1914e9ae039a19b7db86
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  preprocessorOverride: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 232458
+  packageName: Ultimate Earth Planet System
+  packageVersion: 1.1
+  assetPath: Assets/Earth Planet/Shaders/CloudsShader.shader
+  uploadId: 549507
