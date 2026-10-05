@@ -25,6 +25,9 @@ public class CameraControllerInSpace : MonoBehaviour
     private Transform TargetObjectTransform;
     private Transform Pivot;
 
+    // Space Cupola：搖桿操控元件（掛在同一物件上時接管環繞與縮放；停用即恢復原本的滑鼠操作）
+    private SpaceCupola.Controls.SpacecraftOrbitController _orbitController;
+
     private Vector3 targetPositionOverUnit;
     private Vector3 StartPositionOverUnit;
     private Quaternion targetRotationOverUnit;
@@ -83,6 +86,8 @@ public class CameraControllerInSpace : MonoBehaviour
         TargetObjectTransform.name = "TargetLockedObjectForCamera";
         TargetObjectTransform.SetParent(FindObjectOfType<UnitEarth>().transform);
 
+        _orbitController = GetComponent<SpaceCupola.Controls.SpacecraftOrbitController>();
+
 
     }
     void Update()
@@ -100,6 +105,14 @@ public class CameraControllerInSpace : MonoBehaviour
         if (FlyToUnit != null)
         {
             FlyTo();
+            return;
+        }
+
+        // 搖桿操控：由 SpacecraftOrbitController 處理環繞、高度、閒置回正。
+        // FlyTo / FlyBack 仍優先（上方已先 return）。
+        if (_orbitController != null && _orbitController.isActiveAndEnabled)
+        {
+            _orbitController.Tick(Pivot);
             return;
         }
         

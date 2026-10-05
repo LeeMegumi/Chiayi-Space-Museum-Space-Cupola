@@ -169,8 +169,9 @@ public class WorldMapManager : MonoBehaviour
         if (instance == null) instance = this;
         else if (instance != this) { Destroy(gameObject); return; };
 
+        BuildCountryLookup();
         HideMap();
-        
+
 
     }
 
@@ -187,58 +188,134 @@ public class WorldMapManager : MonoBehaviour
         Camera.main.cullingMask = ~LayerMask.GetMask("Water");
 
     }
+    // ===== Space Cupola：固定為 Earth 檢視模式 =====
+    // 檢視模式 Dropdown（連同掛在其上的 LayersController）已移除，
+    // 改由這裡在啟動時明確設定 Earth，並停用 F1–F9 的模式切換熱鍵，
+    // 避免展場工作人員誤觸鍵盤切到其他模式後無法切回。
+
+    [Header("檢視模式")]
+    [Tooltip("固定為 Earth 模式，並停用 F1–F9 切換熱鍵。")]
+    [SerializeField] private bool lockToEarthState = true;
+
+    void Start()
+    {
+        if (lockToEarthState) CurrentState = State.Earth;
+    }
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F1)) CurrentState = State.Earth;
-        if (Input.GetKeyDown(KeyCode.F2)) CurrentState = State.Politic;
-        if (Input.GetKeyDown(KeyCode.F3)) CurrentState = State.Population;
-        if (Input.GetKeyDown(KeyCode.F4)) CurrentState = State.Science;
-        if (Input.GetKeyDown(KeyCode.F5)) CurrentState = State.Transport;
-        if (Input.GetKeyDown(KeyCode.F6)) CurrentState = State.Disaster;
-        if (Input.GetKeyDown(KeyCode.F7)) CurrentState = State.Climat;
-        if (Input.GetKeyDown(KeyCode.F8)) CurrentState = State.Religion;
-        if (Input.GetKeyDown(KeyCode.F9)) CurrentState = State.Wealth;
+        if (!lockToEarthState)
+        {
+            if (Input.GetKeyDown(KeyCode.F1)) CurrentState = State.Earth;
+            if (Input.GetKeyDown(KeyCode.F2)) CurrentState = State.Politic;
+            if (Input.GetKeyDown(KeyCode.F3)) CurrentState = State.Population;
+            if (Input.GetKeyDown(KeyCode.F4)) CurrentState = State.Science;
+            if (Input.GetKeyDown(KeyCode.F5)) CurrentState = State.Transport;
+            if (Input.GetKeyDown(KeyCode.F6)) CurrentState = State.Disaster;
+            if (Input.GetKeyDown(KeyCode.F7)) CurrentState = State.Climat;
+            if (Input.GetKeyDown(KeyCode.F8)) CurrentState = State.Religion;
+            if (Input.GetKeyDown(KeyCode.F9)) CurrentState = State.Wealth;
+        }
 
       SelectCountry();
+    }
+
+    // ===== 畫面中央偵測（搖桿操控用）=====
+    // 原本的偵測是對 Input.mousePosition 射線；改為螢幕正中央，
+    // 讓觀眾用搖桿把國家轉到準心上就能看到資訊，不需要點選。
+
+    [Header("畫面中央國家偵測")]
+    [Tooltip("開啟：偵測畫面正中央（搖桿操控）。關閉：沿用滑鼠位置（開發除錯用）。")]
+    [SerializeField] private bool useScreenCenter = true;
+
+    [Tooltip("國家變更後需連續命中多久才更新面板，避免搖桿移動時國界附近文字閃爍（秒）。")]
+    [Range(0f, 1f)]
+    [SerializeField] private float hoverSettleTime = 0.15f;
+
+    // 滯後穩定器狀態
+    private Country _pendingCountry;        // 待確認的候選國家（可為 null，代表待確認「離開」）
+    private bool    _hasPending;            // 是否有待確認的變更
+    private float   _pendingTimer;
+    private Vector2 _pendingUV;
+
+    // GameObject -> Country 快取。原本每幀對 177 筆做 List.Find + lambda，
+    // 在 4K 展場的主迴圈裡沒必要，改為字典查詢。
+    private Dictionary<GameObject, Country> _countryByGameObject;
+
+    private void BuildCountryLookup()
+    {
+        _countryByGameObject = new Dictionary<GameObject, Country>(countries.Count);
+        for (int i = 0; i < countries.Count; i++)
+        {
+            if (countries[i] != null) _countryByGameObject[countries[i].gameObject] = countries[i];
+        }
+    }
+
+    /// <summary>目前的偵測射線 —— 畫面中央或滑鼠位置。</summary>
+    private Ray GetPointerRay()
+    {
+        if (useScreenCenter)
+            return Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+
+        return Camera.main.ScreenPointToRay(Input.mousePosition);
+    }
+
+    /// <summary>沿偵測射線找出國家。未命中或命中非國家物件時回傳 null。</summary>
+    private Country RaycastCountry(out Vector2 uv)
+    {
+        uv = default;
+
+        if (!Physics.Raycast(GetPointerRay(), out RaycastHit hit, 1000)) return null;
+        if (hit.collider == null) return null;
+
+        if (_countryByGameObject == null) BuildCountryLookup();
+        if (_countryByGameObject.TryGetValue(hit.collider.gameObject, out Country found))
+        {
+            uv = hit.textureCoord;
+            return found;
+        }
+        return null;
     }
 
     void SelectCountry()
     {
         PlaceUnitPoint();
 
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Country candidate = RaycastCountry(out Vector2 uv);
 
-        if (Physics.Raycast(ray, out hit, 1000))
+        // 命中同一個國家：不必等待，持續更新 UV。
+        // （原本只在國家「改變」時更新 UV，導致氣候／宗教停留在進入該國時的那一點；
+        //   中央準心模式下必須跟著準心走才正確。）
+        if (candidate == CurrentHoveredCountry)
         {
-
-            if (hit.collider.gameObject == null) return;
-            Country tempCountry = countries.Find(X => X.gameObject == hit.collider.gameObject);
-            if (tempCountry != null)
-            {
-                if (tempCountry != CurrentHoveredCountry)
-                {
-                    if (CurrentHoveredCountry != null) CurrentHoveredCountry.Hovered = false;
-                    CurrentHoveredCountry = tempCountry;
-                    HoveredEarthUVCoord = hit.textureCoord;
-                }
-
-                CurrentHoveredCountry.Hovered = true;
-                return;
-            }
-            else
-            {
-                if (CurrentHoveredCountry != null) CurrentHoveredCountry.Hovered = false;
-                CurrentHoveredCountry = null;
-            }
-        }
-        else
-        {
-            if (CurrentHoveredCountry != null) CurrentHoveredCountry.Hovered = false;
-            CurrentHoveredCountry = null;
+            _hasPending = false;
+            if (candidate != null) HoveredEarthUVCoord = uv;
+            return;
         }
 
+        // 偵測到變更 —— 先進待確認區，連續維持 hoverSettleTime 後才真正套用。
+        if (!_hasPending || candidate != _pendingCountry)
+        {
+            _hasPending = true;
+            _pendingCountry = candidate;
+            _pendingUV = uv;
+            _pendingTimer = 0f;
+            return;
+        }
 
+        _pendingUV = uv;
+        _pendingTimer += Time.unscaledDeltaTime;
+        if (_pendingTimer < hoverSettleTime) return;
+
+        // 確認變更
+        if (CurrentHoveredCountry != null) CurrentHoveredCountry.Hovered = false;
+        CurrentHoveredCountry = _pendingCountry;
+        if (CurrentHoveredCountry != null)
+        {
+            HoveredEarthUVCoord = _pendingUV;
+            CurrentHoveredCountry.Hovered = true;
+        }
+        _hasPending = false;
     }
 
     public Vector2 HoveredEarthUVCoord;
@@ -247,24 +324,17 @@ public class WorldMapManager : MonoBehaviour
 
     void PlaceUnitPoint()
     {
-        if (Input.GetMouseButton(0))
+        // 標記動作。沿用 GetPointerRay()，因此在中央準心模式下會標在畫面正中央，
+        // 與資訊面板顯示的國家一致。
+        if (!Input.GetMouseButton(0)) return;
+
+        if (Physics.Raycast(GetPointerRay(), out RaycastHit hit, 1000))
         {
-            RaycastHit hit;
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 1000 ))
-        {
-             
+            CurrentSelectedCountry = CurrentHoveredCountry;
+            SelectedEarthUVCoord = HoveredEarthUVCoord;
 
-           
-
-
-                CurrentSelectedCountry = CurrentHoveredCountry;
-                SelectedEarthUVCoord = HoveredEarthUVCoord;
-
-
-             UnitPoint.transform.position = hit.point;
-             UnitPoint.transform.SetParent(FindObjectOfType<UnitEarth>().transform);
-            }
-         
+            UnitPoint.transform.position = hit.point;
+            UnitPoint.transform.SetParent(FindObjectOfType<UnitEarth>().transform);
         }
     }
 

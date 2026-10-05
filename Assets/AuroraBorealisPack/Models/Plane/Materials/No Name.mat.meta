@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 6a8d6b039b300214b9f0a2d6df671c1d
+timeCreated: 1500709255
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 96632
+  packageName: AuroraBorealis Pack
+  packageVersion: 1.0
+  assetPath: Assets/AuroraBorealisPack/Models/Plane/Materials/No Name.mat
+  uploadId: 195243

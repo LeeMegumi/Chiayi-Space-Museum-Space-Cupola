@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: d8b419c3b1a5aae4789b6ad1055b8d76
+timeCreated: 1501252762
+licenseType: Store
+ShaderImporter:
+  defaultTextures:
+  - _Noise: {fileID: 2800000, guid: 996ab69fc7b418d43afb72642ca4bb39, type: 3}
+  - _Ramp: {fileID: 2800000, guid: 35953316124ff054cb119bd322e1ca8c, type: 3}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 96632
+  packageName: AuroraBorealis Pack
+  packageVersion: 1.0
+  assetPath: Assets/AuroraBorealisPack/Shaders/AuroraBorealis.shader
+  uploadId: 195243

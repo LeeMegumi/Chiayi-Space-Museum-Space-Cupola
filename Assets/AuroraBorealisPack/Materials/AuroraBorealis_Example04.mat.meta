@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 4c0bd67a67c57e34382af72154164809
+timeCreated: 1500709348
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 96632
+  packageName: AuroraBorealis Pack
+  packageVersion: 1.0
+  assetPath: Assets/AuroraBorealisPack/Materials/AuroraBorealis_Example04.mat
+  uploadId: 195243

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 3caee0ec492baa1469bb0d3a60c58b9f
+timeCreated: 1500710089
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 96632
+  packageName: AuroraBorealis Pack
+  packageVersion: 1.0
+  assetPath: Assets/AuroraBorealisPack/Prefabs/AuroraBorealis_Default.prefab
+  uploadId: 195243

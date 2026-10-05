@@ -1,0 +1,935 @@
+{
+ "_comment": "Space Cupola 繁體中文對照表｜譯名採台灣慣用寫法｜k=原始英文(Country.Name)，v=繁中｜格式為陣列以支援 Unity JsonUtility（專案無 Newtonsoft）｜englishDisplay：雙語顯示時的英文副標（取代生硬或過時的 ISO 正式名）",
+ "locale": "zh-TW",
+ "countries": [
+  {
+   "k": "Afghanistan",
+   "v": "阿富汗"
+  },
+  {
+   "k": "Albania",
+   "v": "阿爾巴尼亞"
+  },
+  {
+   "k": "Algeria",
+   "v": "阿爾及利亞"
+  },
+  {
+   "k": "Angola",
+   "v": "安哥拉"
+  },
+  {
+   "k": "Antarctica",
+   "v": "南極洲"
+  },
+  {
+   "k": "Arctic Ocean",
+   "v": "北極海"
+  },
+  {
+   "k": "Argentina",
+   "v": "阿根廷"
+  },
+  {
+   "k": "Armenia",
+   "v": "亞美尼亞"
+  },
+  {
+   "k": "Atlantic Ocean",
+   "v": "大西洋"
+  },
+  {
+   "k": "Australia",
+   "v": "澳洲"
+  },
+  {
+   "k": "Austria",
+   "v": "奧地利"
+  },
+  {
+   "k": "Azerbaijan",
+   "v": "亞塞拜然"
+  },
+  {
+   "k": "Bahamas",
+   "v": "巴哈馬"
+  },
+  {
+   "k": "Bangladesh",
+   "v": "孟加拉"
+  },
+  {
+   "k": "Belarus",
+   "v": "白俄羅斯"
+  },
+  {
+   "k": "Belgium",
+   "v": "比利時"
+  },
+  {
+   "k": "Belize",
+   "v": "貝里斯"
+  },
+  {
+   "k": "Benin",
+   "v": "貝南"
+  },
+  {
+   "k": "Bhutan",
+   "v": "不丹"
+  },
+  {
+   "k": "Bolivia",
+   "v": "玻利維亞"
+  },
+  {
+   "k": "Bosnia and Herzegovina",
+   "v": "波士尼亞與赫塞哥維納"
+  },
+  {
+   "k": "Botswana",
+   "v": "波札那"
+  },
+  {
+   "k": "Brazil",
+   "v": "巴西"
+  },
+  {
+   "k": "Brunei Darussalam",
+   "v": "汶萊"
+  },
+  {
+   "k": "Bulgaria",
+   "v": "保加利亞"
+  },
+  {
+   "k": "Burkina Faso",
+   "v": "布吉納法索"
+  },
+  {
+   "k": "Burundi",
+   "v": "蒲隆地"
+  },
+  {
+   "k": "C\\u00f4te d'Ivoire",
+   "v": "象牙海岸"
+  },
+  {
+   "k": "Cambodia",
+   "v": "柬埔寨"
+  },
+  {
+   "k": "Cameroon",
+   "v": "喀麥隆"
+  },
+  {
+   "k": "Canada",
+   "v": "加拿大"
+  },
+  {
+   "k": "Central African Republic",
+   "v": "中非共和國"
+  },
+  {
+   "k": "Chad",
+   "v": "查德"
+  },
+  {
+   "k": "Chile",
+   "v": "智利"
+  },
+  {
+   "k": "China",
+   "v": "中國"
+  },
+  {
+   "k": "Colombia",
+   "v": "哥倫比亞"
+  },
+  {
+   "k": "Congo",
+   "v": "剛果共和國"
+  },
+  {
+   "k": "Congo, the Democratic Republic of the",
+   "v": "剛果民主共和國"
+  },
+  {
+   "k": "Costa Rica",
+   "v": "哥斯大黎加"
+  },
+  {
+   "k": "Croatia",
+   "v": "克羅埃西亞"
+  },
+  {
+   "k": "Cuba",
+   "v": "古巴"
+  },
+  {
+   "k": "Cyprus",
+   "v": "賽普勒斯"
+  },
+  {
+   "k": "Czech Republic",
+   "v": "捷克"
+  },
+  {
+   "k": "Denmark",
+   "v": "丹麥"
+  },
+  {
+   "k": "Djibouti",
+   "v": "吉布地"
+  },
+  {
+   "k": "Dominican Republic",
+   "v": "多明尼加"
+  },
+  {
+   "k": "Ecuador",
+   "v": "厄瓜多"
+  },
+  {
+   "k": "Egypt",
+   "v": "埃及"
+  },
+  {
+   "k": "El Salvador",
+   "v": "薩爾瓦多"
+  },
+  {
+   "k": "Equatorial Guinea",
+   "v": "赤道幾內亞"
+  },
+  {
+   "k": "Eritrea",
+   "v": "厄利垂亞"
+  },
+  {
+   "k": "Estonia",
+   "v": "愛沙尼亞"
+  },
+  {
+   "k": "Ethiopia",
+   "v": "衣索比亞"
+  },
+  {
+   "k": "Falkland Islands (Malvinas)",
+   "v": "福克蘭群島"
+  },
+  {
+   "k": "Fiji",
+   "v": "斐濟"
+  },
+  {
+   "k": "Finland",
+   "v": "芬蘭"
+  },
+  {
+   "k": "France",
+   "v": "法國"
+  },
+  {
+   "k": "French Guiana",
+   "v": "法屬圭亞那"
+  },
+  {
+   "k": "French Polynesia",
+   "v": "法屬玻里尼西亞"
+  },
+  {
+   "k": "French Southern Territories",
+   "v": "法屬南部及南極領地"
+  },
+  {
+   "k": "Gabon",
+   "v": "加彭"
+  },
+  {
+   "k": "Georgia",
+   "v": "喬治亞"
+  },
+  {
+   "k": "Germany",
+   "v": "德國"
+  },
+  {
+   "k": "Ghana",
+   "v": "迦納"
+  },
+  {
+   "k": "Greece",
+   "v": "希臘"
+  },
+  {
+   "k": "Greenland",
+   "v": "格陵蘭"
+  },
+  {
+   "k": "Guatemala",
+   "v": "瓜地馬拉"
+  },
+  {
+   "k": "Guinea",
+   "v": "幾內亞"
+  },
+  {
+   "k": "Guinea-Bissau",
+   "v": "幾內亞比索"
+  },
+  {
+   "k": "Guyana",
+   "v": "蓋亞那"
+  },
+  {
+   "k": "Haiti",
+   "v": "海地"
+  },
+  {
+   "k": "Honduras",
+   "v": "宏都拉斯"
+  },
+  {
+   "k": "Hungary",
+   "v": "匈牙利"
+  },
+  {
+   "k": "Iceland",
+   "v": "冰島"
+  },
+  {
+   "k": "India",
+   "v": "印度"
+  },
+  {
+   "k": "Indian Ocean",
+   "v": "印度洋"
+  },
+  {
+   "k": "Indonesia",
+   "v": "印尼"
+  },
+  {
+   "k": "Iran, Islamic Republic of",
+   "v": "伊朗"
+  },
+  {
+   "k": "Iraq",
+   "v": "伊拉克"
+  },
+  {
+   "k": "Ireland",
+   "v": "愛爾蘭"
+  },
+  {
+   "k": "Israel",
+   "v": "以色列"
+  },
+  {
+   "k": "Italy",
+   "v": "義大利"
+  },
+  {
+   "k": "Jamaica",
+   "v": "牙買加"
+  },
+  {
+   "k": "Japan",
+   "v": "日本"
+  },
+  {
+   "k": "Jordan",
+   "v": "約旦"
+  },
+  {
+   "k": "Kazakhstan",
+   "v": "哈薩克"
+  },
+  {
+   "k": "Kenya",
+   "v": "肯亞"
+  },
+  {
+   "k": "Kiribati",
+   "v": "吉里巴斯"
+  },
+  {
+   "k": "Korea, Democratic People's Republic of",
+   "v": "北韓"
+  },
+  {
+   "k": "Korea, Republic of",
+   "v": "南韓"
+  },
+  {
+   "k": "Kuwait",
+   "v": "科威特"
+  },
+  {
+   "k": "Kyrgyzstan",
+   "v": "吉爾吉斯"
+  },
+  {
+   "k": "Lao People's Democratic Republic",
+   "v": "寮國"
+  },
+  {
+   "k": "Latvia",
+   "v": "拉脫維亞"
+  },
+  {
+   "k": "Lesotho",
+   "v": "賴索托"
+  },
+  {
+   "k": "Liberia",
+   "v": "賴比瑞亞"
+  },
+  {
+   "k": "Libya",
+   "v": "利比亞"
+  },
+  {
+   "k": "Lithuania",
+   "v": "立陶宛"
+  },
+  {
+   "k": "Macedonia, the Former Yugoslav Republic of",
+   "v": "北馬其頓"
+  },
+  {
+   "k": "Madagascar",
+   "v": "馬達加斯加"
+  },
+  {
+   "k": "Malawi",
+   "v": "馬拉威"
+  },
+  {
+   "k": "Malaysia",
+   "v": "馬來西亞"
+  },
+  {
+   "k": "Mali",
+   "v": "馬利"
+  },
+  {
+   "k": "Mauritania",
+   "v": "茅利塔尼亞"
+  },
+  {
+   "k": "Mexico",
+   "v": "墨西哥"
+  },
+  {
+   "k": "Moldova, Republic of",
+   "v": "摩爾多瓦"
+  },
+  {
+   "k": "Mongolia",
+   "v": "蒙古"
+  },
+  {
+   "k": "Montenegro",
+   "v": "蒙特內哥羅"
+  },
+  {
+   "k": "Morocco",
+   "v": "摩洛哥"
+  },
+  {
+   "k": "Mozambique",
+   "v": "莫三比克"
+  },
+  {
+   "k": "Myanmar",
+   "v": "緬甸"
+  },
+  {
+   "k": "Namibia",
+   "v": "納米比亞"
+  },
+  {
+   "k": "Nepal",
+   "v": "尼泊爾"
+  },
+  {
+   "k": "Netherlands",
+   "v": "荷蘭"
+  },
+  {
+   "k": "New Caledonia",
+   "v": "新喀里多尼亞"
+  },
+  {
+   "k": "New Zealand",
+   "v": "紐西蘭"
+  },
+  {
+   "k": "Nicaragua",
+   "v": "尼加拉瓜"
+  },
+  {
+   "k": "Niger",
+   "v": "尼日"
+  },
+  {
+   "k": "Nigeria",
+   "v": "奈及利亞"
+  },
+  {
+   "k": "Norway",
+   "v": "挪威"
+  },
+  {
+   "k": "Oman",
+   "v": "阿曼"
+  },
+  {
+   "k": "Pacific Ocean",
+   "v": "太平洋"
+  },
+  {
+   "k": "Pakistan",
+   "v": "巴基斯坦"
+  },
+  {
+   "k": "Palestine, State of",
+   "v": "巴勒斯坦"
+  },
+  {
+   "k": "Panama",
+   "v": "巴拿馬"
+  },
+  {
+   "k": "Papua New Guinea",
+   "v": "巴布亞紐幾內亞"
+  },
+  {
+   "k": "Paraguay",
+   "v": "巴拉圭"
+  },
+  {
+   "k": "Peru",
+   "v": "秘魯"
+  },
+  {
+   "k": "Philippines",
+   "v": "菲律賓"
+  },
+  {
+   "k": "Poland",
+   "v": "波蘭"
+  },
+  {
+   "k": "Portugal",
+   "v": "葡萄牙"
+  },
+  {
+   "k": "Puerto Rico",
+   "v": "波多黎各"
+  },
+  {
+   "k": "Qatar",
+   "v": "卡達"
+  },
+  {
+   "k": "Romania",
+   "v": "羅馬尼亞"
+  },
+  {
+   "k": "Russia",
+   "v": "俄羅斯"
+  },
+  {
+   "k": "Rwanda",
+   "v": "盧安達"
+  },
+  {
+   "k": "Saudi Arabia",
+   "v": "沙烏地阿拉伯"
+  },
+  {
+   "k": "Senegal",
+   "v": "塞內加爾"
+  },
+  {
+   "k": "Serbia",
+   "v": "塞爾維亞"
+  },
+  {
+   "k": "Sierra Leone",
+   "v": "獅子山"
+  },
+  {
+   "k": "Slovakia",
+   "v": "斯洛伐克"
+  },
+  {
+   "k": "Slovenia",
+   "v": "斯洛維尼亞"
+  },
+  {
+   "k": "Solomon Islands",
+   "v": "索羅門群島"
+  },
+  {
+   "k": "Somalia",
+   "v": "索馬利亞"
+  },
+  {
+   "k": "South Africa",
+   "v": "南非"
+  },
+  {
+   "k": "South Sudan",
+   "v": "南蘇丹"
+  },
+  {
+   "k": "Southern Ocean",
+   "v": "南冰洋"
+  },
+  {
+   "k": "Spain",
+   "v": "西班牙"
+  },
+  {
+   "k": "Sri Lanka",
+   "v": "斯里蘭卡"
+  },
+  {
+   "k": "Sudan",
+   "v": "蘇丹"
+  },
+  {
+   "k": "Suriname",
+   "v": "蘇利南"
+  },
+  {
+   "k": "Swaziland",
+   "v": "史瓦帝尼"
+  },
+  {
+   "k": "Sweden",
+   "v": "瑞典"
+  },
+  {
+   "k": "Switzerland",
+   "v": "瑞士"
+  },
+  {
+   "k": "Syrian Arab Republic",
+   "v": "敘利亞"
+  },
+  {
+   "k": "Tajikistan",
+   "v": "塔吉克"
+  },
+  {
+   "k": "Tanzania, United Republic of",
+   "v": "坦尚尼亞"
+  },
+  {
+   "k": "Thailand",
+   "v": "泰國"
+  },
+  {
+   "k": "Timor-Leste",
+   "v": "東帝汶"
+  },
+  {
+   "k": "Togo",
+   "v": "多哥"
+  },
+  {
+   "k": "Tunisia",
+   "v": "突尼西亞"
+  },
+  {
+   "k": "Turkey",
+   "v": "土耳其"
+  },
+  {
+   "k": "Turkmenistan",
+   "v": "土庫曼"
+  },
+  {
+   "k": "Uganda",
+   "v": "烏干達"
+  },
+  {
+   "k": "Ukraine",
+   "v": "烏克蘭"
+  },
+  {
+   "k": "United Arab Emirates",
+   "v": "阿拉伯聯合大公國"
+  },
+  {
+   "k": "United States",
+   "v": "美國"
+  },
+  {
+   "k": "Uruguay",
+   "v": "烏拉圭"
+  },
+  {
+   "k": "Uzbekistan",
+   "v": "烏茲別克"
+  },
+  {
+   "k": "Vanuatu",
+   "v": "萬那杜"
+  },
+  {
+   "k": "Venezuela, Bolivarian Republic of",
+   "v": "委內瑞拉"
+  },
+  {
+   "k": "Viet Nam",
+   "v": "越南"
+  },
+  {
+   "k": "Yemen",
+   "v": "葉門"
+  },
+  {
+   "k": "Zambia",
+   "v": "尚比亞"
+  },
+  {
+   "k": "Zimbabwe",
+   "v": "辛巴威"
+  }
+ ],
+ "countriesSpare": [
+  {
+   "k": "Côte d'Ivoire",
+   "v": "象牙海岸"
+  },
+  {
+   "k": "Singapore",
+   "v": "新加坡"
+  },
+  {
+   "k": "United Kingdom",
+   "v": "英國"
+  },
+  {
+   "k": "Kosovo",
+   "v": "科索沃"
+  },
+  {
+   "k": "Taiwan",
+   "v": "台灣"
+  }
+ ],
+ "oceanKeys": [
+  "Arctic Ocean",
+  "Atlantic Ocean",
+  "Indian Ocean",
+  "Pacific Ocean",
+  "Southern Ocean"
+ ],
+ "climateZones": [
+  {
+   "k": "Tropical",
+   "v": "熱帶"
+  },
+  {
+   "k": "Dry",
+   "v": "乾燥帶"
+  },
+  {
+   "k": "Temperate",
+   "v": "溫帶"
+  },
+  {
+   "k": "Continental",
+   "v": "大陸性氣候"
+  },
+  {
+   "k": "Polar",
+   "v": "極地"
+  }
+ ],
+ "religions": [
+  {
+   "k": "Christianity",
+   "v": "基督宗教"
+  },
+  {
+   "k": "Islam",
+   "v": "伊斯蘭教"
+  },
+  {
+   "k": "Buddhism",
+   "v": "佛教"
+  },
+  {
+   "k": "Hinduism",
+   "v": "印度教"
+  },
+  {
+   "k": "Judaism",
+   "v": "猶太教"
+  },
+  {
+   "k": "Unaffiliated",
+   "v": "無宗教信仰"
+  },
+  {
+   "k": "Folk",
+   "v": "民間信仰"
+  },
+  {
+   "k": "None",
+   "v": "無資料"
+  }
+ ],
+ "uiLabels": [
+  {
+   "k": "Country:",
+   "v": "國家"
+  },
+  {
+   "k": "Population Count:",
+   "v": "人口"
+  },
+  {
+   "k": "Coordinates:",
+   "v": "座標"
+  },
+  {
+   "k": "Religion",
+   "v": "宗教"
+  },
+  {
+   "k": "Religion:",
+   "v": "宗教"
+  },
+  {
+   "k": "Climat",
+   "v": "氣候帶"
+  },
+  {
+   "k": "Climat:",
+   "v": "氣候帶"
+  },
+  {
+   "k": "Disaster:",
+   "v": "天災風險"
+  },
+  {
+   "k": "Transport:",
+   "v": "交通"
+  },
+  {
+   "k": "Science:",
+   "v": "科技"
+  },
+  {
+   "k": "Wealth:",
+   "v": "財富"
+  },
+  {
+   "k": "Lock Camera",
+   "v": "鎖定視角"
+  },
+  {
+   "k": "Selected City",
+   "v": "選定城市"
+  },
+  {
+   "k": "Country Name",
+   "v": "國家名稱"
+  },
+  {
+   "k": "Name",
+   "v": "名稱"
+  },
+  {
+   "k": "No Country",
+   "v": "公海區域"
+  },
+  {
+   "k": "N/A",
+   "v": "—"
+  }
+ ],
+ "englishDisplay": [
+  {
+   "k": "C\\u00f4te d'Ivoire",
+   "v": "Côte d'Ivoire"
+  },
+  {
+   "k": "Congo, the Democratic Republic of the",
+   "v": "DR Congo"
+  },
+  {
+   "k": "Congo",
+   "v": "Republic of the Congo"
+  },
+  {
+   "k": "Macedonia, the Former Yugoslav Republic of",
+   "v": "North Macedonia"
+  },
+  {
+   "k": "Korea, Democratic People's Republic of",
+   "v": "North Korea"
+  },
+  {
+   "k": "Korea, Republic of",
+   "v": "South Korea"
+  },
+  {
+   "k": "Iran, Islamic Republic of",
+   "v": "Iran"
+  },
+  {
+   "k": "Lao People's Democratic Republic",
+   "v": "Laos"
+  },
+  {
+   "k": "Moldova, Republic of",
+   "v": "Moldova"
+  },
+  {
+   "k": "Palestine, State of",
+   "v": "Palestine"
+  },
+  {
+   "k": "Syrian Arab Republic",
+   "v": "Syria"
+  },
+  {
+   "k": "Tanzania, United Republic of",
+   "v": "Tanzania"
+  },
+  {
+   "k": "Venezuela, Bolivarian Republic of",
+   "v": "Venezuela"
+  },
+  {
+   "k": "Viet Nam",
+   "v": "Vietnam"
+  },
+  {
+   "k": "Brunei Darussalam",
+   "v": "Brunei"
+  },
+  {
+   "k": "Falkland Islands (Malvinas)",
+   "v": "Falkland Islands"
+  },
+  {
+   "k": "Swaziland",
+   "v": "Eswatini"
+  },
+  {
+   "k": "French Southern Territories",
+   "v": "French Southern Lands"
+  }
+ ]
+}

@@ -10,8 +10,8 @@ public class LayersController : MonoBehaviour
      
     void Awake()
     {
-       
-        drop.onValueChanged.AddListener(OnChange); 
+        // Space Cupola 移除了檢視模式 Dropdown；drop 可能為 null
+        if (drop != null) drop.onValueChanged.AddListener(OnChange);
         WorldMapManager.EventChangeState += OnChangeState;
     }
     private void OnChange(int id)
@@ -30,11 +30,11 @@ public class LayersController : MonoBehaviour
     }
     private void OnDestroy()
     {
-        drop.onValueChanged.RemoveListener(OnChange);
+        if (drop != null) drop.onValueChanged.RemoveListener(OnChange);
         WorldMapManager.EventChangeState -= OnChangeState;
     }
     void OnChangeState()
     {
-        drop.value=(int)WorldMapManager.instance.CurrentState;
-    } 
+        if (drop != null) drop.value=(int)WorldMapManager.instance.CurrentState;
+    }
 }

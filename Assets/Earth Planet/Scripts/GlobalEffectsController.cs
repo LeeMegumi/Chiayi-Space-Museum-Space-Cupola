@@ -26,17 +26,28 @@ public class GlobalEffectsController : MonoBehaviour
 
     [SerializeField] MagneticFieldEffect MagneticField;
 
+    [Header("Space Cupola")]
+    [Tooltip("固定為「無特效」，忽略 PlayerPrefs 記住的上次選擇。\n" +
+             "DropdownSelectGlobalEffects 已移除，若不鎖定，" +
+             "PlayerPrefs 裡殘留的舊選擇會讓 Starlink 等特效自行出現，且沒有 UI 能關掉。")]
+    [SerializeField] bool lockToNoEffect = true;
+
     public static GlobalEffectsController instance;
     void Start()
     {
         instance= this;
-        drop.onValueChanged.AddListener(OnChange);
+        // Dropdown 已移除時 drop 為 null；保留判斷以相容仍有 Dropdown 的場景
+        if (drop != null) drop.onValueChanged.AddListener(OnChange);
         CityConnectionsTransform.SetParent(FindObjectOfType<UnitEarth>().transform);
         MagneticField.transform.SetParent(CityConnectionsTransform.parent);
-        if (PlayerPrefs.HasKey("Effect"))
+        if (lockToNoEffect)
+        {
+            OnChange(0);
+        }
+        else if (PlayerPrefs.HasKey("Effect"))
         {
             OnChange(PlayerPrefs.GetInt("Effect"));
-        }else 
+        }else
         OnChange(0);
     }
     private void OnChange(int id)
@@ -72,7 +83,7 @@ public class GlobalEffectsController : MonoBehaviour
             MagneticField.gameObject.SetActive(true);
         }
 
-        drop.value = id;
+        if (drop != null) drop.value = id;
         PlayerPrefs.SetInt("Effect", id);
         PlayerPrefs.Save();
         Debug.Log("Effect: " + id);
@@ -80,7 +91,7 @@ public class GlobalEffectsController : MonoBehaviour
     }
     private void OnDestroy()
     {
-        drop.onValueChanged.RemoveListener(OnChange); 
+        if (drop != null) drop.onValueChanged.RemoveListener(OnChange);
     }
 
 
