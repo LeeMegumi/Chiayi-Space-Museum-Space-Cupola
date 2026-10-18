@@ -53,6 +53,8 @@ namespace SpaceCupola.UI
         [SerializeField] private string captionCountry    = "國家／地區  <size=70%>COUNTRY</size>";
         [SerializeField] private string captionOcean      = "海域  <size=70%>OCEAN</size>";
         [SerializeField] private string captionNone       = "目前位置  <size=70%>LOCATION</size>";
+        [SerializeField] private string captionLocked     = "鎖定跟隨中  <size=70%>LOCKED · 推動搖桿或按扳機解除</size>";
+        [SerializeField] private string captionNoLandmark = "畫面附近沒有地標  <size=70%>NO LANDMARK NEARBY</size>";
         [SerializeField] private string noCountryTitle    = "公海區域";
 
         [Header("地球座標換算（已驗證，勿隨意更改）")]
@@ -61,6 +63,7 @@ namespace SpaceCupola.UI
 
         private float _timer;
         private UnitEarth _earth;
+        private SpaceCupola.Controls.SpacecraftOrbitController _orbit;
 
         private void OnEnable() => _timer = 0f;
 
@@ -78,8 +81,14 @@ namespace SpaceCupola.UI
             CityManager cm = CityManager.instance;
 
             // 選取中的城市標籤可能已被回收（Unity 的 == null 會成立）
-            City city = null;
-            if (cm != null && cm.SelectedCityLabel != null) city = cm.SelectedCityLabel.city;
+            if (_orbit == null && Camera.main != null)
+                _orbit = Camera.main.GetComponent<SpaceCupola.Controls.SpacecraftOrbitController>();
+            City locked = _orbit != null ? _orbit.LockedCity : null;
+            bool lockFailed = _orbit != null && Time.unscaledTime - _orbit.LastLockFailTime < 1.5f;
+
+            // 鎖定中以鎖定的城市為準；否則用準心附近自動選取的城市
+            City city = locked;
+            if (city == null && cm != null && cm.SelectedCityLabel != null) city = cm.SelectedCityLabel.city;
 
             Country hovered = wm != null ? wm.CurrentHoveredCountry : null;
             Country country = (city != null && city.country != null) ? city.country : hovered;
@@ -96,7 +105,7 @@ namespace SpaceCupola.UI
             // ── 標題與小標 ──
             if (city != null)
             {
-                SetText(caption, captionCity);
+                SetText(caption, locked != null ? captionLocked : captionCity);
                 SetText(title, SpaceCupola.Cities.CityDirectory.TitleText(city));   // 「東京 Tokyo」
             }
             else if (inTaiwan)
@@ -118,6 +127,8 @@ namespace SpaceCupola.UI
                 SetText(caption, captionNone);
                 SetText(title, noCountryTitle);
             }
+
+            if (lockFailed && locked == null) SetText(caption, captionNoLandmark);
 
             // ── 國家 ──
             // 選到城市時以城市資料的國名為準：台灣城市沒有對應的國家網格（country 為 null），

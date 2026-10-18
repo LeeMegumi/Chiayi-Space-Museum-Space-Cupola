@@ -206,13 +206,24 @@ public class CityManager : MonoBehaviour
         _hasPendingCity = false;
     }
 
-    CityLabel FindLabelNearScreenCenter()
+    CityLabel FindLabelNearScreenCenter() => FindLabelNearScreenCenter(Screen.height * centerSelectRadius);
+
+    /// <summary>
+    /// Space Cupola：扳機鎖定地標用。在目前地球上「有顯示標籤」的城市中，找離畫面中央準心最近、
+    /// 且位於朝向相機那一面、落在畫面範圍內的城市。沒有則回傳 null。
+    /// </summary>
+    public City FindNearestVisibleCity()
+    {
+        CityLabel label = FindLabelNearScreenCenter(Mathf.Max(Screen.width, Screen.height));
+        return label != null ? label.city : null;
+    }
+
+    CityLabel FindLabelNearScreenCenter(float maxDist)
     {
         Camera cam = Camera.main;
         if (cam == null) return null;
 
         Vector2 center = new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
-        float maxDist = Screen.height * centerSelectRadius;
 
         if (_earth == null) _earth = FindObjectOfType<UnitEarth>();   // 快取，避免每幀搜尋場景
         Vector3 earthCenter = _earth != null ? _earth.transform.position : Vector3.zero;
@@ -235,6 +246,7 @@ public class CityManager : MonoBehaviour
 
             Vector3 screen = cam.WorldToScreenPoint(cityPos);
             if (screen.z <= 0f) continue;
+            if (screen.x < 0f || screen.y < 0f || screen.x > Screen.width || screen.y > Screen.height) continue;
 
             float d = Vector2.Distance(center, new Vector2(screen.x, screen.y));
             if (d < bestDist)

@@ -193,17 +193,6 @@
                 },
                 {
                     "name": "",
-                    "id": "408ef1c7-6fd8-429e-ba4f-edb7c8ff42dc",
-                    "path": "<Joystick>/trigger",
-                    "interactions": "Hold(duration=2)",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ResetView",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "6dc22ebe-d837-48de-92af-a69e73ef3d6e",
                     "path": "<Keyboard>/r",
                     "interactions": "",

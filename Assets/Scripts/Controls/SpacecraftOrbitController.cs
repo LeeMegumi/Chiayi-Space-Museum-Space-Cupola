@@ -11,7 +11,8 @@
 //   * 搖桿前後左右：沿經線／緯線環繞（高度越低轉得越慢，地表移動速度感一致）
 //   * 握把扭轉：同樣是左右環繞
 //   * 推力桿：位置直接對應高度，往前推＝靠近地球
-//   * 長按扳機 2 秒：回到初始視角（扳機最常被亂按，所以要長按）
+//   * 扳機：短按鎖定地標、長按 2 秒返回待機（由 ControlSessionManager 處理）
+//   * 鍵盤 R：回到初始視角（工作人員用）
 //   * 閒置 60 秒：自動回到初始高度與角度；地球本身每秒自轉 1°（UnitEarth），不另加相機旋轉
 //
 // ── 實測數據（_Claude/reports/joystick_probe.txt）─────────────────
@@ -99,6 +100,7 @@ namespace SpaceCupola.Controls
         [SerializeField] private float attractYawSpeed = 0f;
 
         [Header("除錯")]
+        [Tooltip("已改為鍵盤 F10 統一切換（啟動時隱藏），此欄位保留相容，不再使用。")]
         [SerializeField] private bool showDebugOverlay = false;
 
         private InputAction _orbit, _twist, _throttle, _reset, _mouseHold, _mouseDelta, _mouseZoom;
@@ -163,6 +165,38 @@ namespace SpaceCupola.Controls
             actions.devices = new ReadOnlyArray<InputDevice>(list.ToArray());
             DisarmThrottle();
         }
+
+        // ── 地標鎖定跟隨 ─────────────────────────────────────────────
+        private City _lockedCity;
+
+        /// <summary>目前鎖定跟隨的城市（未鎖定為 null）。</summary>
+        public City LockedCity => _lockedCity != null ? _lockedCity : null;
+
+        /// <summary>最近一次「想鎖定卻找不到地標」的時間（Time.unscaledTime），供面板提示。</summary>
+        public float LastLockFailTime { get; private set; } = -100f;
+
+        /// <summary>
+        /// 鎖定／解除。鎖定對象為離畫面中央準心最近、且正面朝向相機的城市標籤。
+        /// 鎖定後相機持續把該城市置於畫面中央（地球每秒自轉 1°，城市會被一路跟住）；
+        /// 推力桿（高度）仍可調整。推動搖桿、扭轉、滑鼠拖曳或再按一次扳機即解除。
+        /// </summary>
+        public bool ToggleLandmarkLock()
+        {
+            _idle = 0f;   // 按扳機算有人操作
+            if (LockedCity != null) { ClearLandmarkLock(); return false; }
+
+            City c = CityManager.instance != null ? CityManager.instance.FindNearestVisibleCity() : null;
+            if (c == null)
+            {
+                LastLockFailTime = Time.unscaledTime;
+                return false;
+            }
+            _lockedCity = c;
+            Debug.Log($"[SpacecraftOrbitController] 鎖定地標：{c.Name}");
+            return true;
+        }
+
+        public void ClearLandmarkLock() => _lockedCity = null;
 
         /// <summary>套用操控手感：速度倍率（相對於 Inspector 設定的 orbitSpeed）與響應曲線指數。</summary>
         public void ApplyProfile(float speedMultiplier, float exponent)
@@ -278,7 +312,11 @@ namespace SpaceCupola.Controls
             // ── 搖桿 + 扭轉（鍵盤方向鍵與 Q/E 亦綁在同一動作，供測試）──
             Vector2 stick = ShapeStick(_orbit.ReadValue<Vector2>());
             float twist = ShapeAxis(_twist.ReadValue<float>()) * (invertTwist ? -1f : 1f);
-            if (stick.sqrMagnitude > 0f || twist != 0f) active = true;
+            if (stick.sqrMagnitude > 0f || twist != 0f)
+            {
+                active = true;
+                ClearLandmarkLock();   // 推動搖桿即解除鎖定
+            }
 
             float yawInput = stick.x + twist * twistWeight;
             // Pivot 以 Euler(pitch, yaw, 0) 旋轉：yaw 正向會讓相機往 −x 移動（往西），
@@ -293,6 +331,7 @@ namespace SpaceCupola.Controls
                 if (d.sqrMagnitude > 0f)
                 {
                     active = true;
+                    ClearLandmarkLock();
                     _yaw   += d.x * mouseDegreesPerPixel;
                     _pitch -= d.y * mouseDegreesPerPixel;
                 }
@@ -325,7 +364,7 @@ namespace SpaceCupola.Controls
                 }
             }
 
-            // ── 長按扳機 2 秒：回到初始視角 ──
+            // ── 鍵盤 R：回到初始視角（工作人員用；扳機已改為鎖定地標／返回待機）──
             if (_resetQueued)
             {
                 _resetQueued = false;
@@ -365,6 +404,16 @@ namespace SpaceCupola.Controls
                 _yaw  += attractYawSpeed * _attractWeight * dt;
             }
 
+            // ── 地標鎖定：讓城市保持在畫面正中央 ──
+            // 相機從地心看出的方向 = Pivot.rotation × (0,0,−1) = (−cos p·sin y, sin p, −cos p·cos y)
+            // 反解：pitch = asin(d.y)、yaw = atan2(−d.x, −d.z)，d 為地心指向城市的單位向量。
+            if (LockedCity != null && !_locked)
+            {
+                Vector3 d = (LockedCity.transform.position - pivot.position).normalized;
+                _pitch = Mathf.Asin(Mathf.Clamp(d.y, -1f, 1f)) * Mathf.Rad2Deg;
+                _yaw   = Mathf.Atan2(-d.x, -d.z) * Mathf.Rad2Deg;
+            }
+
             // ── 限制與套用 ──
             _pitch = Mathf.Clamp(_pitch, pitchLimits.x, pitchLimits.y);
             _scale = Mathf.Clamp(_scale, lo, hi);
@@ -401,7 +450,7 @@ namespace SpaceCupola.Controls
 
         private void OnGUI()
         {
-            if (!showDebugOverlay || _orbit == null) return;
+            if (!DebugOverlay.Visible || _orbit == null) return;
             GUILayout.BeginArea(new Rect(Screen.width - 330, 10, 320, 250), GUI.skin.box);
             InputDevice shown = _activeJoystick != null ? _activeJoystick : Joystick.current;
             GUILayout.Label($"搖桿：{(HasJoystick && shown != null ? $"{shown.displayName} (#{shown.deviceId})" : "未連接（滑鼠模式）")}");

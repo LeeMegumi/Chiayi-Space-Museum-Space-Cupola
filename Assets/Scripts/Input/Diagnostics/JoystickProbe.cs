@@ -37,6 +37,7 @@ namespace SpaceCupola.InputDiagnostics
         [Tooltip("軸的變化量超過此值才算「有被操作」，用於報告中區分有用與無用的軸。")]
         [SerializeField] private float usedAxisThreshold = 0.2f;
 
+        [Tooltip("勾選後，按 F10 時才會顯示偵測畫面（啟動時一律隱藏）。")]
         [SerializeField] private bool showOverlay = true;
 
         private class AxisStat
@@ -84,6 +85,8 @@ namespace SpaceCupola.InputDiagnostics
 
         private void Update()
         {
+            SpaceCupola.Controls.DebugOverlay.HandleHotkey();
+
             float elapsed = Time.realtimeSinceStartup - _startTime;
             if (elapsed < warmupSeconds) return;
             bool resting = elapsed < restMeasureSeconds;
@@ -190,7 +193,8 @@ namespace SpaceCupola.InputDiagnostics
 
         private void OnGUI()
         {
-            if (!showOverlay) return;
+            // 啟動時隱藏，F10 切換（展場實測時偵測畫面一直蓋在左側）
+            if (!showOverlay || !SpaceCupola.Controls.DebugOverlay.Visible) return;
 
             float elapsed = Time.realtimeSinceStartup - _startTime;
             GUILayout.BeginArea(new Rect(10, 10, 560, Screen.height - 20), GUI.skin.box);

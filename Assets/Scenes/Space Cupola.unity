@@ -42580,7 +42580,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -110016,6 +110016,9 @@ MonoBehaviour:
   captionCountry: "\u570B\u5BB6\uFF0F\u5730\u5340  <size=70%>COUNTRY</size>"
   captionOcean: "\u6D77\u57DF  <size=70%>OCEAN</size>"
   captionNone: "\u76EE\u524D\u4F4D\u7F6E  <size=70%>LOCATION</size>"
+  captionLocked: "\u9396\u5B9A\u8DDF\u96A8\u4E2D  <size=70%>LOCKED \xB7 \u63A8\u52D5\u6416\u687F\u6216\u6309\u6273\u6A5F\u89E3\u9664</size>"
+  captionNoLandmark: "\u756B\u9762\u9644\u8FD1\u6C92\u6709\u5730\u6A19  <size=70%>NO
+    LANDMARK NEARBY</size>"
   noCountryTitle: "\u516C\u6D77\u5340\u57DF"
   earthRadius: 0.25
   longitudeOffsetDegrees: 0.52
@@ -117242,54 +117245,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76708cf1c110940448ffa41b0c25105c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1811715268
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1811715269}
-  - component: {fileID: 1811715270}
-  m_Layer: 0
-  m_Name: Joystick
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1811715269
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1811715268}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1811715270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1811715268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 343e5a29beffa4544bb213efa43df91f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  restMeasureSeconds: 3
-  warmupSeconds: 0.5
-  usedAxisThreshold: 0.2
-  showOverlay: 1
 --- !u!114 &1811848859 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 374947853525240130, guid: 61ae6f0448152614eb17a03998e70247, type: 3}
@@ -145783,6 +145738,8 @@ MonoBehaviour:
   idleTimeout: 60
   countdownSeconds: 10
   exitHoldSeconds: 2
+  tapMaxSeconds: 0.5
+  exitRingDelay: 0.35
   standbyGraceSeconds: 1.5
   stickThreshold: 0.35
   twistThreshold: 0.4
@@ -145792,8 +145749,8 @@ MonoBehaviour:
   adultExponent: 1.6
   childSpeed: 0.7
   childExponent: 2
-  exitHintText: "\u9577\u6309\u6416\u687F\u4E0A\u7684\u9000\u51FA\u9375 2 \u79D2\uFF0C\u8FD4\u56DE\u5F85\u6A5F\u756B\u9762"
-  exitHintNoButton: "\u7121\u4EBA\u64CD\u4F5C 60 \u79D2\u5F8C\u81EA\u52D5\u8FD4\u56DE\u5F85\u6A5F\u756B\u9762"
+  triggerHintText: "\u77ED\u6309\u6273\u6A5F\uFF1A\u9396\u5B9A\u5730\u6A19\u3000\u9577\u6309\u6273\u6A5F
+    2 \u79D2\uFF1A\u8FD4\u56DE\u5F85\u6A5F\u756B\u9762"
 --- !u!4 &2100496489
 Transform:
   m_ObjectHideFlags: 0
@@ -156911,5 +156868,4 @@ SceneRoots:
   - {fileID: 1985818778}
   - {fileID: 1682448758}
   - {fileID: 633557550}
-  - {fileID: 1811715269}
   - {fileID: 2100496489}

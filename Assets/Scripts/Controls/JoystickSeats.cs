@@ -4,13 +4,14 @@
 // 套用位置：Assets/Scripts/Controls/JoystickSeats.cs
 //
 // ── 識別問題 ────────────────────────────────────────────────────
-// 兩支同型號的 TCA Sidestick 在 Unity 中都是「T.A320 Copilot」，VID/PID 相同。
-// 實測序號（description.serial）為 "1"，兩支很可能相同；deviceId 則依插入順序分配，重開機可能對調。
-// 因此：
-//   * 兩支序號不同 → 以序號記憶（永久有效）
-//   * 序號相同     → 以「依 deviceId 排序後的順序」記憶。Windows 通常依 USB 埠固定列舉順序，
-//                    但不保證；若重開機後大人／小孩對調，工作人員按 F9 重新設定即可。
-// 設定時會自動選擇模式，並記錄在 PlayerPrefs。
+// 兩支同型號的 TCA Sidestick 在 Unity 中都是「T.A320 Copilot」，VID/PID 相同、序號皆為 "1"，
+// deviceId 依啟動時的列舉順序分配，而 Windows 列舉同型號裝置的先後不保證固定。
+// 實際展場測試：每次開啟都要重新綁定、推小孩搖桿卻亮大人卡片（看起來像「被搶走」）。
+//
+// 識別方式（設定時自動選擇最可靠者，記錄在 PlayerPrefs）：
+//   1. USB 插孔（HidPortTracker，Windows）—— 插在同一個孔，重開機後仍正確。【優先】
+//   2. 序號 —— 兩支序號不同時可用。
+//   3. 連接順序 —— 最後手段，重開機可能對調。
 
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,6 +33,7 @@ namespace SpaceCupola.Controls
         private const string PrefAdult = "SpaceCupola.Seat.Adult";
         private const string PrefExit  = "SpaceCupola.ExitButton";
 
+        private const string PortPrefix   = "port:";
         private const string SerialPrefix = "serial:";
         private const string OrderPrefix  = "order:";
 
@@ -58,7 +60,7 @@ namespace SpaceCupola.Controls
             return Seat.None;
         }
 
-        /// <summary>此位置目前對應的搖桿（未連接則為 null）。</summary>
+        /// <summary>此位置目前對應的搖桿（未連接或尚未關聯則為 null）。</summary>
         public static InputDevice DeviceFor(Seat seat)
         {
             foreach (InputDevice d in ConnectedJoysticks())
@@ -66,9 +68,40 @@ namespace SpaceCupola.Controls
             return null;
         }
 
+        /// <summary>
+        /// 此位置的搖桿是否已連接。插孔識別模式下只需該插孔有裝置，不必等到有人推動、完成關聯。
+        /// </summary>
+        public static bool IsSeatConnected(Seat seat)
+        {
+            string key = PlayerPrefs.GetString(seat == Seat.Child ? PrefChild : PrefAdult, "");
+            if (key.StartsWith(PortPrefix))
+            {
+                string loc = key.Substring(PortPrefix.Length);
+                foreach (string l in HidPortTracker.CurrentLocations) if (l == loc) return true;
+                return false;
+            }
+            return DeviceFor(seat) != null;
+        }
+
+        /// <summary>目前儲存的識別模式（顯示用）。</summary>
+        public static string SavedMode
+        {
+            get
+            {
+                string k = PlayerPrefs.GetString(PrefChild, PlayerPrefs.GetString(PrefAdult, ""));
+                if (k.StartsWith(PortPrefix))   return "USB 插孔";
+                if (k.StartsWith(SerialPrefix)) return "序號";
+                if (k.StartsWith(OrderPrefix))  return "連接順序";
+                return "未設定";
+            }
+        }
+
         private static bool Matches(InputDevice device, string key)
         {
             if (string.IsNullOrEmpty(key)) return false;
+
+            if (key.StartsWith(PortPrefix))
+                return HidPortTracker.LocationOf(device) == key.Substring(PortPrefix.Length);
 
             if (key.StartsWith(SerialPrefix))
                 return device.description.serial == key.Substring(SerialPrefix.Length);
@@ -86,6 +119,20 @@ namespace SpaceCupola.Controls
         /// <summary>儲存兩支搖桿的位置對應。adult 可為 null（只接一支時）。回傳使用的識別模式說明。</summary>
         public static string Save(InputDevice child, InputDevice adult)
         {
+            // 1. USB 插孔（最可靠）
+            string cl = HidPortTracker.LocationOf(child);
+            string al = HidPortTracker.LocationOf(adult);
+            if (cl != null && (adult == null || (al != null && al != cl)))
+            {
+                PlayerPrefs.DeleteKey(PrefChild);
+                PlayerPrefs.DeleteKey(PrefAdult);
+                if (child != null) PlayerPrefs.SetString(PrefChild, PortPrefix + cl);
+                if (adult != null) PlayerPrefs.SetString(PrefAdult, PortPrefix + al);
+                PlayerPrefs.Save();
+                return "以 USB 插孔識別（重開機後仍正確；請勿調換兩支搖桿的插孔）";
+            }
+
+            // 2. 序號／3. 連接順序
             string cs = child != null ? child.description.serial : null;
             string asr = adult != null ? adult.description.serial : null;
 
